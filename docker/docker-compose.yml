@@ -1,0 +1,46 @@
+version: '3.0'
+
+services:
+
+  mydocument:
+    container_name: my_document
+    build:
+      context: ./war
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - 8181:8080
+    environment:
+      - TOMCAT_ALLOW_REMOTE_MANAGEMENT=1
+      - TOMCAT_USERNAME=user
+      - TOMCAT_PASSWORD=
+      - JDBC_URL=jdbc:postgresql://postgres:5432/statementdbliq
+
+  iis:
+    container_name: iis
+    build:
+      context: ./iis
+      dockerfile: Dockerfile
+    depends_on:
+      - mydocument
+    ports:
+      - 8282:8080
+    environment:
+      - TOMCAT_ALLOW_REMOTE_MANAGEMENT=1
+      - TOMCAT_USERNAME=user2
+      - TOMCAT_PASSWORD=
+      - IIS_JDBC_URL=jdbc:postgresql://postgres:5432/iisdbliq
+
+  postgres:
+    container_name: postgresDB
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=statementDB
+      - POSTGRES_PASSWORD=qwerty
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db-data:/var/lib/postgresql/data

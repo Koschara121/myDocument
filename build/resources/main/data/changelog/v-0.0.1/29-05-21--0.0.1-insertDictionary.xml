@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="user (generated)" id="1622277869387-10">
+        <insert tableName="type_of_statement">
+            <column name="key" value="DOC-PFR"/>
+            <column name="name" value="Заявление в ПФР"/>
+        </insert>
+    </changeSet>
+    <changeSet author="user (generated)" id="1622277869387-11">
+        <insert tableName="type_of_statement">
+            <column name="key" value="DOC-FNS"/>
+            <column name="name" value="Заявление в ФНС"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet author="user (generated)" id="1622277869387-12">
+        <insert tableName="department">
+            <column name="key" value="DEP-PFR"/>
+            <column name="name" value="Ведомство ПФР"/>
+        </insert>
+    </changeSet>
+    <changeSet author="user (generated)" id="1622277869387-13">
+        <insert tableName="department">
+            <column name="key" value="DEP-FNS"/>
+            <column name="name" value="Ведомство ФНС"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="user (generated)" id="1622277869387-14">
+        <insert tableName="statement_status">
+            <column name="key" value="NEW"/>
+            <column name="name" value="Заявление зарегистрировано"/>
+        </insert>
+    </changeSet>
+    <changeSet author="user (generated)" id="1622277869387-15">
+        <insert tableName="statement_status">
+            <column name="key" value="PROCESSING"/>
+            <column name="name" value="Заявление было передано в ведомство"/>
+        </insert>
+    </changeSet>
+    <changeSet author="user (generated)" id="1622277869387-16">
+        <insert tableName="statement_status">
+            <column name="key" value="COMPLETED"/>
+            <column name="name" value="Заявление было обработано ведомством"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="user (generated)" id="1622277869387-17">
+        <insert tableName="employee">
+            <column name="login" value="admin"/>
+            <column name="middle_name" value="admin"/>
+            <column name="name" value="admin"/>
+            <column name="password" value="$2a$10$AjHGc4x3Nez/p4ZpvFDWeO6FGxee/cVqj5KHHnHfuLnIOzC5ag4fm"/>
+            <column name="sure_name" value="admin"/>
+        </insert>
+    </changeSet>
+    <changeSet author="user (generated)" id="1622277869387-18">
+        <insert tableName="employee">
+            <column name="login" value="admin2"/>
+            <column name="middle_name" value="admin2"/>
+            <column name="name" value="admin2"/>
+            <column name="password" value="$2y$12$WrLvqf581xOIxa4eJHZhWudbwOKN/9BheqIo5mvfhYC9oZ5URKdKS"/>
+            <column name="sure_name" value="admin2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet author="user (generated)" id="1622283354563-6">
+        <addForeignKeyConstraint baseColumnNames="typeofstatement_id" baseTableName="statement" constraintName="fkd2y56jni28ibqcsdi4tg80cjp" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="type_of_statement" validate="true"/>
+    </changeSet>
+
+    <changeSet author="user (generated)" id="1622283354563-7">
+        <addForeignKeyConstraint baseColumnNames="department_id" baseTableName="statement" constraintName="fkb89ntoja26ausetjwl2wgg8wy" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="department" validate="true"/>
+    </changeSet>
+
+    <changeSet author="user (generated)" id="1622283354563-8">
+        <addForeignKeyConstraint baseColumnNames="statementstatus_id" baseTableName="statement" constraintName="fklye5qi5kd5p4y4nsiw55svugr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="statement_status" validate="true"/>
+    </changeSet>
+
+    <changeSet author="user (generated)" id="1622283354563-9">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+</databaseChangeLog>
