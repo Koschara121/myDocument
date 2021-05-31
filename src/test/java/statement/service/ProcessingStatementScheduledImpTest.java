@@ -37,8 +37,6 @@ class ProcessingStatementScheduledImpTest {
 
     private static final StatementStatus status = mock(StatementStatus.class);
 
-
-
     @Test
     void processingNewStatement() {
 

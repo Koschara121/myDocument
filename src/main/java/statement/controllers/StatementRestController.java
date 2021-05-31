@@ -12,6 +12,7 @@ import statement.message.mappers.StatementMapper;
 import statement.message.mappers.StatementStatusMapper;
 import statement.service.StatementService;
 
+import javax.persistence.EntityNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class StatementRestController {
         try {
             statementService.registeringNewStatement(statementMapper.toEntity(statementDTO));
             return  ResponseEntity.ok().body("Заявление сохранино!");
-        } catch (StatementAlreadyExistException | SQLException e) {
+        } catch (StatementAlreadyExistException | SQLException | EntityNotFoundException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
@@ -50,7 +51,7 @@ public class StatementRestController {
         List<StatementDTO> statementDTOList = statementMapper.toDTOs(statementService.getAllStatement(passportNumber));
 
         return !statementDTOList.isEmpty()
-                ? new ResponseEntity<>(statementDTOList, HttpStatus.valueOf(202))
+                ? new ResponseEntity<>(statementDTOList, HttpStatus.valueOf(200))
                 : new ResponseEntity<>(statementDTOList, HttpStatus.valueOf(404));
     }
 }

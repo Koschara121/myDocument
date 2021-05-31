@@ -26,7 +26,6 @@ class StatementServiceImpTest {
 
     @Autowired
     private StatementServiceImp statementServiceImp;
-
     @Autowired
     private StatementRepositories statementRepositories;
     @Autowired
@@ -43,7 +42,6 @@ class StatementServiceImpTest {
         when(sec.getAuthentication()).thenReturn(auth);
         SecurityContextHolder.setContext(sec);
     }
-
 
     //Регистрация новгого заявления которого нет в БД
     @Test
