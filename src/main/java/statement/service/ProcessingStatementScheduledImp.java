@@ -54,9 +54,7 @@ public class ProcessingStatementScheduledImp implements ProcessingStatementSched
 
     private void requestNewStatement(Statement statement){
 
-        HttpHeaders header = new HttpHeaders();
-        header.setBasicAuth(environment.getRequiredProperty("header.username"),
-                            environment.getRequiredProperty("header.password"));
+        HttpHeaders header = getHeaderForBasicAuth();
 
         HttpEntity<StatementDTO> request = new HttpEntity<StatementDTO>(statementMapper.toDTO(statement), header);
 
@@ -91,9 +89,8 @@ public class ProcessingStatementScheduledImp implements ProcessingStatementSched
                 .queryParam("typeStatement", statement.getTypeOfStatement().getKey())
                 .queryParam("numberStatement", statement.getNumber());
 
-        HttpHeaders header = new HttpHeaders();
-        header.setBasicAuth(environment.getRequiredProperty("header.username"),
-                            environment.getRequiredProperty("header.password"));
+        HttpHeaders header = getHeaderForBasicAuth();
+
         HttpEntity<String> request = new HttpEntity<String>(header);
 
         try {
@@ -111,6 +108,13 @@ public class ProcessingStatementScheduledImp implements ProcessingStatementSched
         }catch (RestClientException re) {
             System.err.println(re.getMessage());
         }
+    }
+
+    private HttpHeaders getHeaderForBasicAuth() {
+        HttpHeaders header = new HttpHeaders();
+        header.setBasicAuth(environment.getRequiredProperty("header.username"),
+                            environment.getRequiredProperty("header.password"));
+        return header;
     }
 
     @Transactional
