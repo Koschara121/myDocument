@@ -1,6 +1,8 @@
 package statement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -24,6 +26,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@PropertySource(value = "classpath:resttemplate.properties")
 public class ProcessingStatementScheduledImp implements ProcessingStatementScheduled {
 
     @Autowired
@@ -32,6 +35,10 @@ public class ProcessingStatementScheduledImp implements ProcessingStatementSched
     private StatementStatusRepositories statementStatusRepositories;
     @Autowired
     private StatementMapper statementMapper;
+    @Autowired
+    private Environment environment;
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     @Scheduled(cron = "0 * * ? * *")
@@ -47,16 +54,14 @@ public class ProcessingStatementScheduledImp implements ProcessingStatementSched
 
     private void requestNewStatement(Statement statement){
 
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "http://iis:8080/api/IIS/registration";
-
         HttpHeaders header = new HttpHeaders();
-        header.setBasicAuth("admin","admin");
+        header.setBasicAuth(environment.getRequiredProperty("header.username"),
+                            environment.getRequiredProperty("header.password"));
 
         HttpEntity<StatementDTO> request = new HttpEntity<StatementDTO>(statementMapper.toDTO(statement), header);
 
        try {
-           ResponseEntity<?> response = restTemplate.postForEntity(url, request, ResponseEntity.class);
+           ResponseEntity<?> response = restTemplate.postForEntity(environment.getRequiredProperty("rest.template.new.statement.url"), request, ResponseEntity.class);
 
            if(response.getStatusCodeValue() == 200) {
                updateStatusStatement(statement, statementStatusRepositories.findByKey("PROCESSING")
@@ -80,16 +85,15 @@ public class ProcessingStatementScheduledImp implements ProcessingStatementSched
     }
 
     private void requestStatusStatement(Statement statement) {
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "http://iis:8080/api/IIS/status/?";
 
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(environment.getRequiredProperty("rest.template.old.statement.url"))
                 .queryParam("keyDepartment", statement.getDepartment().getKey())
                 .queryParam("typeStatement", statement.getTypeOfStatement().getKey())
                 .queryParam("numberStatement", statement.getNumber());
 
         HttpHeaders header = new HttpHeaders();
-        header.setBasicAuth("admin","admin");
+        header.setBasicAuth(environment.getRequiredProperty("header.username"),
+                            environment.getRequiredProperty("header.password"));
         HttpEntity<String> request = new HttpEntity<String>(header);
 
         try {

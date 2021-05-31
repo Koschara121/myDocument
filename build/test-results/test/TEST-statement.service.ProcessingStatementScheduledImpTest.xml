@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="statement.service.ProcessingStatementScheduledImpTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-31T07:44:49" hostname="user-HP-ProBook-450-G7" time="0.031">
+<testsuite name="statement.service.ProcessingStatementScheduledImpTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-31T08:22:06" hostname="user-HP-ProBook-450-G7" time="0.032">
   <properties/>
-  <testcase name="processingNewStatement()" classname="statement.service.ProcessingStatementScheduledImpTest" time="0.031"/>
+  <testcase name="processingNewStatement()" classname="statement.service.ProcessingStatementScheduledImpTest" time="0.032"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation

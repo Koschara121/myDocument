@@ -54,15 +54,15 @@ statement/repositories/StatementRepositories.java
  statement.repositories.StatementRepositories
 statement/repositories/EmployeeRepositories.java
  statement.repositories.EmployeeRepositories
-statement/service/ProcessingStatementScheduledImp.java
- statement.service.ProcessingStatementScheduledImp
+statement/config/DataJpaConfig.java
+ statement.config.DataJpaConfig
 statement/service/authentication/jwt/JwtProvider.java
  statement.service.authentication.jwt.JwtProvider
 statement/service/ProcessingStatementScheduled.java
  statement.service.ProcessingStatementScheduled
 statement/config/ApplicationConfig.java
  statement.config.ApplicationConfig
-statement/config/DataJpaConfig.java
- statement.config.DataJpaConfig
 statement/config/WebInitializer.java
  statement.config.WebInitializer
+statement/service/ProcessingStatementScheduledImp.java
+ statement.service.ProcessingStatementScheduledImp

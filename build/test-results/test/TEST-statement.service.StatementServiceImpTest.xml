@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="statement.service.StatementServiceImpTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-31T07:44:49" hostname="user-HP-ProBook-450-G7" time="0.023">
+<testsuite name="statement.service.StatementServiceImpTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-31T08:22:07" hostname="user-HP-ProBook-450-G7" time="0.018">
   <properties/>
-  <testcase name="registeringDuplicateStatement()" classname="statement.service.StatementServiceImpTest" time="0.011"/>
-  <testcase name="registeringNewStatement()" classname="statement.service.StatementServiceImpTest" time="0.011"/>
+  <testcase name="registeringDuplicateStatement()" classname="statement.service.StatementServiceImpTest" time="0.008"/>
+  <testcase name="registeringNewStatement()" classname="statement.service.StatementServiceImpTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

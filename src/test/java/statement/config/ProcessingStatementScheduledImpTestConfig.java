@@ -2,6 +2,7 @@ package statement.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import statement.message.mappers.StatementMapper;
 import statement.repositories.DepartmentRepositories;
 import statement.repositories.StatementRepositories;
@@ -35,11 +36,15 @@ public class ProcessingStatementScheduledImpTestConfig {
     }
 
     @Bean
-    TypeOfStatementRepositories typeOfStatementRepositories() {
+    public TypeOfStatementRepositories typeOfStatementRepositories() {
         return mock(TypeOfStatementRepositories.class);
     }
     @Bean
-    DepartmentRepositories departmentRepositories() {
+    public DepartmentRepositories departmentRepositories() {
         return mock(DepartmentRepositories.class);
+    }
+    @Bean
+    public RestTemplate restTemplate() {
+        return mock(RestTemplate.class);
     }
 }
